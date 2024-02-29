@@ -10,7 +10,6 @@ pipeline{
     ansiColor('xterm')
     parallelsAlwaysFailFast()
     durabilityHint 'PERFORMANCE_OPTIMIZED'
-    copyArtifactPermission "/${env.AMB}/*"
     buildDiscarder logRotator(artifactDaysToKeepStr: '30', artifactNumToKeepStr: '90', daysToKeepStr: '90', numToKeepStr: '270')
   }
   stages{
