@@ -5,9 +5,7 @@ pipeline{
   parameters{
     string name: 'mavenJDKVersion', trim: true, defaultValue: '1.17', description: 'Java Version'
   }
-  environment {
-    
-  }
+ 
   options {
     ansiColor('xterm')
     parallelsAlwaysFailFast()
