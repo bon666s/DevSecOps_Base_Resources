@@ -1,0 +1,21 @@
+package net.gbm.devcenter.billing.utils.exceptions;
+
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.ExceptionMapper;
+import jakarta.ws.rs.ext.Provider;
+import net.gbm.devcenter.billing.utils.exceptions.dtos.ErrorResponse;
+
+import java.util.UUID;
+
+@Provider
+public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundException> {
+
+    @Override
+    public Response toResponse(NotFoundException e) {
+        String errorId = UUID.randomUUID().toString();
+        ErrorResponse.ErrorMessage errorMessage = new ErrorResponse.ErrorMessage(e.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(errorId, errorMessage);
+        return Response.status(Response.Status.NOT_FOUND).entity(errorResponse).build();
+    }
+}
