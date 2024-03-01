@@ -18,6 +18,13 @@ pipeline{
         cleanWs deleteDirs: true, notFailBuild: true, patterns: [[pattern: 'deploy_*', type: 'INCLUDE']]
       }
     }
+    
+    stage('Maven Test') {
+      steps {
+          // Paso para ejecutar pruebas con Maven
+          sh 'mvn test'
+      }
+    }
 
     stage("Imprimir en consola") {
       steps {
