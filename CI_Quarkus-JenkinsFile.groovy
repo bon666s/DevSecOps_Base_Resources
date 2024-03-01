@@ -21,8 +21,14 @@ pipeline{
     
     stage('Maven Test') {
       steps {
-          // Paso para ejecutar pruebas con Maven
-          sh 'mvn test'
+                // Paso para ejecutar pruebas con Maven
+                sh 'mvn -Xmx3072m test'
+            }
+            
+      post {
+          always {
+              junit '**/surefire-reports/TEST-*.xml'
+          }
       }
     }
 
