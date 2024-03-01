@@ -25,15 +25,25 @@ pipeline{
     
     stage('Maven Test') {
       steps {
-                // Paso para ejecutar pruebas con Maven
-                sh 'mvn test'
+              // Paso para ejecutar pruebas con Maven
+              sh 'mvn test'
             }
             
       post {
-          always {
-              junit '**/surefire-reports/TEST-*.xml'
-          }
+        always {
+          junit '**/surefire-reports/TEST-*.xml'
+        }
       }
+    }
+
+    stages {
+      stage('Install JDK') {
+        steps {
+            script {
+                // Instalación de JDK
+                tool 'jdk8' // Nombre del JDK definido en la configuración de Jenkins
+            }
+        }
     }
 
     stage("Imprimir en consola") {
