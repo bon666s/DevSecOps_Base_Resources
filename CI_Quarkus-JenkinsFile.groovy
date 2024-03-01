@@ -36,16 +36,16 @@ pipeline{
       }
     }
 
-    stages {
-      stage('Install JDK') {
-        steps {
-            script {
-                // Instalación de JDK
-                tool 'jdk8' // Nombre del JDK definido en la configuración de Jenkins
-            }
-        }
+    
+    stage('Install JDK') {
+      steps {
+          script {
+              // Instalación de JDK
+              tool 'jdk8' // Nombre del JDK definido en la configuración de Jenkins
+          }
+      }
     }
-
+    
     stage("Imprimir en consola") {
       steps {
         script {
