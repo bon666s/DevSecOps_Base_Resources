@@ -26,7 +26,7 @@ pipeline{
     stage('Maven Test') {
       steps {
                 // Paso para ejecutar pruebas con Maven
-                sh 'mvn -Xmx3072m test'
+                sh 'mvn test'
             }
             
       post {
