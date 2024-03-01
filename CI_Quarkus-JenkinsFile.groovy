@@ -1,7 +1,11 @@
 pipeline{ 
+  
   agent{
     label 'master'
   }
+  environment {
+    MAVEN_OPTS = '-Xmx3072m'
+}
   parameters{
     string name: 'mavenJDKVersion', trim: true, defaultValue: '1.17', description: 'Java Version'
   }
