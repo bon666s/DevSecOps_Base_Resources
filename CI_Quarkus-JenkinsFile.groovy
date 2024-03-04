@@ -43,7 +43,7 @@ pipeline{
       steps {
         script {
           // Aquí puedes colocar cualquier comando que desees ejecutar en el shell
-          sh 'java -v'
+          sh 'java --version'
         }
       }
     }
