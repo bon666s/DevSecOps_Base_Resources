@@ -3,6 +3,9 @@ pipeline{
   agent{
     label 'master'
   }
+  tools {
+    jdk 'Java17'
+  }
   environment {
     MAVEN_OPTS = '-Xmx3072m'
 }
@@ -50,7 +53,7 @@ pipeline{
       steps {
         script {
           // Aquí puedes colocar cualquier comando que desees ejecutar en el shell
-          sh 'echo "Hola mundo desde pipeline!"'
+          sh 'java -v'
         }
       }
     }
