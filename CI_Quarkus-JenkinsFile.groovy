@@ -29,7 +29,7 @@ pipeline{
     stage('Maven Test') {
       steps {
               // Paso para ejecutar pruebas con Maven
-              sh 'mvn test'
+              sh 'MAVEN_OPTS="-Xmx3072m" mvn test'
             }
             
       post {
