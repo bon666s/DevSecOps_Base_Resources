@@ -47,7 +47,10 @@ pipeline{
         }
       }
     }
-    stage("Construir contenedor Quarkus") {
+  stage("Construir contenedor Quarkus") {
+  agent {
+    label 'Host Subyacente Docker' 
+  }
   steps {
     script {
       // Define las variables de la imagen Docker
