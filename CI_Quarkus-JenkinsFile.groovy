@@ -30,6 +30,8 @@ pipeline{
       steps {
               // Paso para ejecutar pruebas con Maven
               sh 'MAVEN_OPTS="-Xmx3072m" mvn test'
+              // En el job que produce los artefactos
+              stash includes: 'target/**', name: 'artifact'
             }
             
       post {
@@ -55,10 +57,7 @@ pipeline{
   
   steps {
     script {
-      // Copia el directorio de artefactos desde otro job en el master al nodo actual
-      copyArtifacts(
-                projectName: 'CI_Quarkus'
-      )
+      unstash 'artifact'
   
       // Define las variables de la imagen Docker
       def dockerImageName = "devops-quarkus" // Nombre de la imagen Docker
