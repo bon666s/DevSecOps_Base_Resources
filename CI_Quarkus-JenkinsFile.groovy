@@ -51,15 +51,20 @@ pipeline{
   agent {
     label 'Host Subyacente Docker' 
   }
+
+  
   steps {
     script {
+      // Copia el directorio de artefactos desde otro job en el master al nodo actual
+      copyArtifacts(projectName: 'CI_Quarkus', filter: 'target/**', selector: lastSuccessful())
+  
       // Define las variables de la imagen Docker
       def dockerImageName = "devops-quarkus" // Nombre de la imagen Docker
       def dockerImageTag = "latest" // Etiqueta de la imagen Docker
-
+  
       // Construye la imagen Docker utilizando el Dockerfile proporcionado
       sh "docker build -t ${dockerImageName}:${dockerImageTag} -f src/main/docker/Dockerfile.jvm ."
-    }
+        }
   }
 }
   }
