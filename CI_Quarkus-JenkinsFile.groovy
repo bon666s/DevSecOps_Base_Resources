@@ -57,8 +57,7 @@ pipeline{
     script {
       // Copia el directorio de artefactos desde otro job en el master al nodo actual
       copyArtifacts(
-                projectName: 'CI_Quarkus', 
-                filter: 'target/**'
+                projectName: 'CI_Quarkus'
       )
   
       // Define las variables de la imagen Docker
