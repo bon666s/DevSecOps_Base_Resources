@@ -30,6 +30,7 @@ pipeline{
       steps {
               // Paso para ejecutar pruebas con Maven
               sh 'MAVEN_OPTS="-Xmx3072m" mvn clean package'
+              stash includes: 'target/**', name: 'artifact'
             }
             
       post {
@@ -53,6 +54,7 @@ pipeline{
   }
   steps {
     script {
+       unstash 'artifact'
       // Define las variables de la imagen Docker
       def dockerImageName = "devops-quarkus" // Nombre de la imagen Docker
       def dockerImageTag = "latest" // Etiqueta de la imagen Docker
