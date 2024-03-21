@@ -63,6 +63,7 @@ pipeline{
       //sh "docker build -t ${dockerImageName}:${dockerImageTag} -f src/main/docker/Dockerfile.jvm ."
       bat "docker ps"
       bat "docker run --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro -v C:/Jenkins/Agent/workspace/CI_Quarkus/:/datos docker:latest sh"
+      bat "docker ps"
     }
   }
 }
