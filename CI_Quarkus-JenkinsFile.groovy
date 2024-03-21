@@ -56,11 +56,13 @@ pipeline{
     script {
        unstash 'artifact'
       // Define las variables de la imagen Docker
-      def dockerImageName = "devops-quarkus" // Nombre de la imagen Docker
-      def dockerImageTag = "latest" // Etiqueta de la imagen Docker
+      //def dockerImageName = "devops-quarkus" // Nombre de la imagen Docker
+      //def dockerImageTag = "latest" // Etiqueta de la imagen Docker
 
       // Construye la imagen Docker utilizando el Dockerfile proporcionado
-      sh "docker build -t ${dockerImageName}:${dockerImageTag} -f src/main/docker/Dockerfile.jvm ."
+      //sh "docker build -t ${dockerImageName}:${dockerImageTag} -f src/main/docker/Dockerfile.jvm ."
+      sh "docker run -it --rm --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro    -v C:\Jenkins\Agent\workspace\CI_Quarkus\:/datos docker:latest sh"
+      sh "ls"
     }
   }
 }
