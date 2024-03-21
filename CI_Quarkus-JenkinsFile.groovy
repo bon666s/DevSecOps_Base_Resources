@@ -61,9 +61,9 @@ pipeline{
 
       // Construye la imagen Docker utilizando el Dockerfile proporcionado
       //sh "docker build -t ${dockerImageName}:${dockerImageTag} -f src/main/docker/Dockerfile.jvm ."
-      sh "docker ps"
-      sh "docker run -it --rm --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro -v C:/Jenkins/Agent/workspace/CI_Quarkus/:/datos docker:latest sh"
-      sh "ls"
+      bat "docker ps"
+      bat "docker run -it --rm --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro -v C:/Jenkins/Agent/workspace/CI_Quarkus/:/datos docker:latest sh"
+      bat "ls"
     }
   }
 }
