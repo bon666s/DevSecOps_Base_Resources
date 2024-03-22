@@ -63,7 +63,8 @@ pipeline{
       //sh "docker build -t ${dockerImageName}:${dockerImageTag} -f src/main/docker/Dockerfile.jvm ."
       bat "docker ps"
       //bat "docker run --privileged --name some-docker -d --network some-network --network-alias docker -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-ca:/certs/ca -v some-docker-certs-client:/certs/client docker:dind"
-      bat "docker run --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro -v C:/Jenkins/Agent/workspace/CI_Quarkus/:/datos docker:latest sh -c 'ls'"
+      bat "docker run --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro -v C:/Jenkins/Agent/workspace/CI_Quarkus/:/datos docker:latest sh -c \"docker build -t devops-quarkus:latest -f /datos/src/main/docker/Dockerfile.jvm .\""
+      //bat "docker run --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro -v C:/Jenkins/Agent/workspace/CI_Quarkus/:/datos docker:latest sh -c 'ls'"
       bat "docker ps"
     }
   }
