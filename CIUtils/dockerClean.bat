@@ -17,5 +17,8 @@ docker network rm some-network
 echo Eliminando la imagen dockertrivy:latest...
 docker image rm dockertrivy:latest
 
+echo Eliminando la imagen docker:latest...
+docker image rm docker:latest
+
 echo Proceso completado.
 pause
