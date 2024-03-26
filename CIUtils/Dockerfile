@@ -3,8 +3,8 @@ FROM docker:latest
 
 # Instalar dependencias necesarias para Trivy (wget y tar ya están disponibles)
 # Instalar Trivy
-RUN wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.tar.gz && \
-    tar zxvf trivy_0.18.3_Linux-64bit.tar.gz && \
+COPY trivy_0.18.3_Linux-64bit.tar.gz trivy_0.18.3_Linux-64bit.tar.gz
+RUN tar zxvf trivy_0.18.3_Linux-64bit.tar.gz && \
     mv trivy /usr/local/bin
 
 # Limpiar archivos no necesarios
