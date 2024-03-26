@@ -56,7 +56,7 @@ pipeline{
     script {
        unstash 'artifact'
        bat "CIUtils/dockerInit.bat"
-       bat "cd CIUtils docker build -t dockertrivy . "
+       bat "cd CIUtils && docker build -t dockertrivy ."
        bat "docker run --network some-network -e DOCKER_TLS_CERTDIR=/certs -v some-docker-certs-client:/certs/client:ro -v C:/Jenkins/Agent/workspace/CI_Quarkus/:/datos docker:latest sh -c \"cd datos && docker build -t devops-quarkus:latest -f /datos/src/main/docker/Dockerfile.jvm .\""
        bat "CIUtils/dockeClean.bat"
       
